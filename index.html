@@ -2356,78 +2356,36 @@ body[data-theme="light"] .eje-btn-primary{
   }
 }
 
-/* --- Sesión Dark Cal.com Embed Full-Width & Premium --- */
+/* --- Sesión Dark Cal.com Embed Full-Width & Sleek Pure Black --- */
 .cal-dark-section {
   position: relative;
   width: 100%;
-  padding: clamp(68px, 8.5vw, 110px) 0;
-  background: #030a10;
-  background: radial-gradient(85% 65% at 50% 15%, #082438 0%, #030d17 55%, #02070c 100%);
-  border-top: 1px solid rgba(255, 255, 255, 0.09);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  padding: clamp(52px, 6.5vw, 84px) 0 clamp(44px, 5.5vw, 72px);
+  background: #000000;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   overflow: hidden;
   color: #fff;
 }
-.cal-dark-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(21, 155, 86, 0.12) 1.2px, transparent 1.2px);
-  background-size: 26px 26px;
-  opacity: 0.65;
-  pointer-events: none;
-}
-.cal-dark-section::after {
-  content: '';
-  position: absolute;
-  top: -120px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(800px, 90vw);
-  height: 380px;
-  background: radial-gradient(ellipse at center, rgba(21, 155, 86, 0.18) 0%, rgba(5, 168, 239, 0.08) 50%, transparent 75%);
-  filter: blur(50px);
-  pointer-events: none;
-}
-.cal-embed-card {
-  position: relative;
-  width: 100%;
-  margin-top: clamp(32px, 4.5vw, 48px);
-  border-radius: clamp(20px, 2.8vw, 32px);
-  background: rgba(10, 21, 32, 0.78);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 35px 95px -25px rgba(0, 0, 0, 0.9), 0 0 55px -15px rgba(21, 155, 86, 0.22);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
-  overflow: hidden;
-}
-.cal-embed-header {
-  padding: 14px clamp(18px, 3vw, 28px);
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-}
 .cal-embed-wrapper {
   width: 100%;
-  min-height: clamp(580px, 76vh, 720px);
+  min-height: clamp(620px, 80vh, 760px);
   position: relative;
-  background: #0d1117;
+  background: #000000;
 }
 #my-cal-inline-reunion {
   width: 100%;
   height: 100%;
-  min-height: clamp(580px, 76vh, 720px);
+  min-height: clamp(620px, 80vh, 760px);
+  background: #000000;
   overflow: auto;
 }
 #my-cal-inline-reunion iframe {
   width: 100% !important;
   height: 100% !important;
-  min-height: clamp(580px, 76vh, 720px) !important;
+  min-height: clamp(620px, 80vh, 760px) !important;
   border: none !important;
+  background: #000000 !important;
 }
 </style>
 </helmet>
@@ -3465,102 +3423,57 @@ body[data-theme="light"] .eje-btn-primary{
   </div>
 </section>
 
-<!-- ==================== SESIÓN DARK: CONSULTORÍA & AGENDAMIENTO CAL.COM (FULL-WIDTH & PREMIUM) ==================== -->
+<!-- ==================== SESIÓN DARK: CONSULTORÍA & AGENDAMIENTO CAL.COM (FULL-WIDTH & PURO BLACK) ==================== -->
 <section id="agenda" class="cal-dark-section" aria-label="Agendar Reunión o Consultoría Oficial">
-  <div style="position:relative;z-index:2;width:min(88%, 1320px);margin:0 auto">
-    
-    <!-- Encabezado Editorial Centrado -->
-    <div data-reveal style="text-align:center;max-width:780px;margin:0 auto">
-      <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;background:rgba(21,155,86,.14);border:1px solid rgba(21,155,86,.38);box-shadow:0 0 20px -3px rgba(21,155,86,.25)">
-        <span style="width:7px;height:7px;border-radius:999px;background:#27C93F;box-shadow:0 0 10px #27C93F;animation:subtlePulseGlow 2s infinite"></span>
-        <span data-en="OFFICIAL SCHEDULING · CAL.COM" style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#4ADE80;font-weight:600">CONSULTORÍA &amp; AGENDAMIENTO OFICIAL</span>
-      </div>
-
-      <h2 style="margin-top:18px;color:#fff;font-size:clamp(30px,4.5vw,52px);line-height:1.03;letter-spacing:-.038em;font-weight:600;text-wrap:balance">
-        <span data-en="Direct dialogue for" style="display:block">Diálogo directo para</span>
-        <em data-en="alliances and territory." style="display:block;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;color:var(--amber);text-shadow:0 0 35px rgba(255,195,28,.28)">alianzas y proyectos en territorio.</em>
-      </h2>
-
-      <p data-en="Book a 30m or 1h working session directly with Franklin Steven Corrales and the team to coordinate strategic alliances, international cooperation, volunteering or territorial initiatives." style="margin-top:14px;font-size:clamp(14px,1.3vw,16px);line-height:1.62;color:rgba(225,240,250,.82);margin-left:auto;margin-right:auto;text-wrap:pretty">
-        Agenda una sesión de 30 o 60 minutos con <strong>Franklin Steven Corrales</strong> y el equipo directivo de la Corporación para coordinar alianzas estratégicas, cooperación internacional o voluntariado de alto impacto.
-      </p>
-
-      <!-- Chips informativos de valor -->
-      <div style="margin-top:22px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px">
-        <div style="display:inline-flex;align-items:center;gap:7px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(8px);font-size:12px;color:rgba(255,255,255,.9)">
-          <span style="color:#FFC31C">⏱</span>
-          <span data-en="30m / 1h consultation">30m / 1h de consulta</span>
-        </div>
-        <div style="display:inline-flex;align-items:center;gap:7px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(8px);font-size:12px;color:rgba(255,255,255,.9)">
-          <span style="color:#05A8EF">📹</span>
-          <span data-en="Automatic Google Meet">Google Meet automático</span>
-        </div>
-        <div style="display:inline-flex;align-items:center;gap:7px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(8px);font-size:12px;color:rgba(255,255,255,.9)">
-          <span style="color:#4ADE80">🌐</span>
-          <span data-en="Colombia Time (America/Bogota)">Hora Colombia (America/Bogota)</span>
-        </div>
-        <div style="display:inline-flex;align-items:center;gap:7px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(8px);font-size:12px;color:rgba(255,255,255,.9)">
-          <span style="color:#75DFFF">⚡</span>
-          <span data-en="Instant confirmation">Confirmación inmediata</span>
-        </div>
-      </div>
+  
+  <!-- Encabezado Proporcional y Minimalista -->
+  <div data-reveal style="width:min(90%, 820px);margin:0 auto;text-align:center;padding:0 16px">
+    <div style="display:inline-flex;align-items:center;gap:7px;padding:4px 12px;border-radius:999px;background:rgba(21,155,86,.12);border:1px solid rgba(21,155,86,.28)">
+      <span style="width:6px;height:6px;border-radius:999px;background:#27C93F;box-shadow:0 0 6px #27C93F"></span>
+      <span data-en="OFFICIAL SCHEDULING" style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#4ADE80;font-weight:600">CONSULTORÍA &amp; AGENDAMIENTO</span>
     </div>
 
-    <!-- Contenedor Full-Width Row de la Tarjeta Cal.com -->
-    <div class="cal-embed-card" data-reveal>
-      
-      <!-- Barra Superior Tipo Ventana Studio -->
-      <div class="cal-embed-header">
-        <div style="display:flex;align-items:center;gap:10px">
-          <div style="display:flex;gap:6px">
-            <span style="width:10px;height:10px;border-radius:999px;background:#FF5F56;opacity:.85"></span>
-            <span style="width:10px;height:10px;border-radius:999px;background:#FFBD2E;opacity:.85"></span>
-            <span style="width:10px;height:10px;border-radius:999px;background:#27C93F;opacity:.85"></span>
-          </div>
-          <span data-en="Corporación Soy Pacífico · Official Consultation" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(235,245,252,.75);margin-left:4px">Corporación Soy Pacífico · Consultoría Oficial</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:14px">
-          <span data-en="Live Calendar" style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#4ADE80;display:inline-flex;align-items:center;gap:6px">
-            <span style="width:6px;height:6px;border-radius:999px;background:#4ADE80"></span>
-            <span>Calendario en Vivo</span>
-          </span>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:rgba(255,255,255,.45)">Cal.com Verified</span>
-        </div>
-      </div>
+    <h2 style="margin-top:12px;color:#fff;font-size:clamp(22px,2.6vw,32px);line-height:1.15;letter-spacing:-.03em;font-weight:600">
+      <span data-en="Direct conversation" style="display:inline">Diálogo directo para alianzas </span>
+      <em data-en="in territory." style="display:inline;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;color:var(--amber)">en territorio.</em>
+    </h2>
 
-      <!-- Área de Embebido Inline de Cal.com -->
-      <div class="cal-embed-wrapper">
-        <!-- Cal inline embed code begins -->
-        <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-reunion"></div>
-        <script type="text/javascript">
-          (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-        Cal("init", "reunion", {origin:"https://app.cal.com"});
-        Cal.config = Cal.config || {};
-        Cal.config.forwardQueryParams = true;
+    <p data-en="Coordinate a 30 or 60 minute working session with our team." style="margin-top:8px;font-size:clamp(13px,1.15vw,14.5px);line-height:1.55;color:rgba(255,255,255,.6);max-width:520px;margin-left:auto;margin-right:auto;text-wrap:pretty">
+      Coordina una sesión de 30 o 60 minutos directamente con el equipo directivo de la Corporación.
+    </p>
+  </div>
 
-          Cal.ns.reunion("inline", {
-            elementOrSelector:"#my-cal-inline-reunion",
-            config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
-            calLink: "soypacifico/reunion",
-          });
+  <!-- Cal.com Embebido Full Width (Puro Black, Sin Encapsulado) -->
+  <div style="width:100%;max-width:1440px;margin:clamp(20px,2.8vw,32px) auto 0;padding:0 clamp(10px,2.5vw,24px)">
+    <div class="cal-embed-wrapper">
+      <!-- Cal inline embed code begins -->
+      <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-reunion"></div>
+      <script type="text/javascript">
+        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", "reunion", {origin:"https://app.cal.com"});
+      Cal.config = Cal.config || {};
+      Cal.config.forwardQueryParams = true;
 
-          Cal.ns.reunion("ui", {"theme":"dark","cssVarsPerTheme":{"dark":{"cal-brand":"#159b56"}},"hideEventTypeDetails":false,"layout":"month_view"});
-        </script>
-        <!-- Cal inline embed code ends -->
-      </div>
-      
-      <!-- Micro-dock inferior de soporte -->
-      <div style="padding:12px clamp(18px,3vw,28px);background:rgba(2,8,14,.6);border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:rgba(220,235,245,.65)">
-        <span data-en="Need a special schedule or formal institutional convocation?">¿Requieres un horario especial o convocatoria institucional formal?</span>
-        <div style="display:flex;gap:16px;align-items:center">
-          <a href="mailto:alianzas@soypacifico.org" style="color:var(--skyT);text-decoration:underline">alianzas@soypacifico.org</a>
-          <span style="color:rgba(255,255,255,.2)">|</span>
-          <a href="https://wa.me/573159636154?text=Hola%2C%20quisiera%20coordinar%20una%20reuni%C3%B3n%20institucional." target="_blank" rel="noopener" style="color:#4ADE80;display:inline-flex;align-items:center;gap:5px">
-            <span data-en="Official WhatsApp">WhatsApp Oficial</span>
-            <span>→</span>
-          </a>
-        </div>
-      </div>
+        Cal.ns.reunion("inline", {
+          elementOrSelector:"#my-cal-inline-reunion",
+          config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+          calLink: "soypacifico/reunion",
+        });
+
+        Cal.ns.reunion("ui", {"theme":"dark","cssVarsPerTheme":{"dark":{"cal-brand":"#159b56","cal-bg":"#000000","cal-bg-muted":"#0a0a0a"}},"hideEventTypeDetails":false,"layout":"month_view"});
+      </script>
+      <!-- Cal inline embed code ends -->
+    </div>
+    
+    <!-- Micro-dock inferior sutil y proporcionado -->
+    <div style="margin-top:16px;text-align:center;font-size:12px;color:rgba(255,255,255,.42);display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">
+      <span data-en="Special schedule or institutional convocation?">¿Horario especial o convocatoria formal?</span>
+      <a href="mailto:alianzas@soypacifico.org" style="color:rgba(255,255,255,.75);text-decoration:underline">alianzas@soypacifico.org</a>
+      <span style="opacity:.25">·</span>
+      <a href="https://wa.me/573159636154?text=Hola%2C%20quisiera%20coordinar%20una%20reuni%C3%B3n%20institucional." target="_blank" rel="noopener" style="color:#4ADE80;display:inline-flex;align-items:center;gap:4px">
+        <span data-en="Official WhatsApp">WhatsApp Directo</span>
+        <span>→</span>
+      </a>
     </div>
   </div>
 </section>
