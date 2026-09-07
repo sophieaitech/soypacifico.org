@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Corporación Soy Pacífico · Fortaleciendo la región desde la región</title>
 <meta name="description" content="Plataforma sociocultural nacida en Buenaventura que promueve la transformación social en el Pacífico colombiano mediante cinco ejes de acción.">
 <link rel="icon" type="image/png" href="assets/logo-mark.png">
@@ -29,9 +29,9 @@ body[data-theme="light"]{
 --amberT:#8A5900;--skyT:#06638F;--forestT:#155230;--ultraT:#1626A8;--cyanT:#0A6A8F;
 --glass:rgba(255,255,255,.72);--card:rgba(255,255,255,.9);--shadow:0 30px 70px -30px rgba(8,44,70,.26);
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Archivo,"Helvetica Neue",Helvetica,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;transition:background-color .5s ease,color .5s ease;overflow-x:hidden}
+*, *::before, *::after{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden!important;max-width:100vw!important;width:100%!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Archivo,"Helvetica Neue",Helvetica,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;transition:background-color .5s ease,color .5s ease;overflow-x:hidden!important;max-width:100vw!important;width:100%!important;position:relative}
 h1,h2,h3,h4,p,figure,blockquote{margin:0}
 a{color:var(--ink);text-decoration:none}
 a:hover{color:var(--amber)}
@@ -595,10 +595,10 @@ body[data-theme="light"] [data-eje-cta]:hover{
 
 /* Modal Lector de Artículo de Blog (Material 3 Dialog) */
 #blogReaderModal{
+  display:none;
   position:fixed;
   inset:0;
   z-index:9999;
-  display:flex;
   align-items:center;
   justify-content:center;
   padding:clamp(16px, 3vw, 36px);
@@ -608,9 +608,12 @@ body[data-theme="light"] [data-eje-cta]:hover{
   opacity:0;
   visibility:hidden;
   pointer-events:none;
+  overflow:hidden;
+  max-width:100vw;
   transition:opacity .35s ease, visibility .35s ease;
 }
 #blogReaderModal.is-open{
+  display:flex!important;
   opacity:1;
   visibility:visible;
   pointer-events:auto;
@@ -1074,10 +1077,10 @@ body[data-theme="light"] [data-eje-cta]:hover{
 
 /* --- Modal Centro Legal, Habeas Data & Transparencia --- */
 #legalModal {
+  display: none;
   position: fixed;
   inset: 0;
   z-index: 9999;
-  display: flex;
   align-items: center;
   justify-content: center;
   padding: clamp(14px, 3vw, 32px);
@@ -1086,11 +1089,16 @@ body[data-theme="light"] [data-eje-cta]:hover{
   -webkit-backdrop-filter: blur(16px);
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
+  overflow: hidden;
+  max-width: 100vw;
   transition: opacity 0.35s ease, visibility 0.35s ease;
 }
 #legalModal.is-open {
+  display: flex !important;
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 .legal-modal-card {
   width: min(880px, 100%);
@@ -1302,6 +1310,204 @@ body[data-theme="light"] [data-eje-cta]:hover{
 /* --- Barra Flotante de Menú Móvil (Dock Island Ultra Premium con Acabados Full) --- */
 .mobile-floating-nav {
   display: none;
+}
+
+@media (max-width: 900px) {
+  /* 1. Prevent any container width squeeze or horizontal overflow */
+  div[style*="width:min(85%"],
+  div[style*="width:min(76%"],
+  div[style*="width:min(88%"],
+  div[style*="width:min(90%"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: clamp(14px, 4vw, 20px) !important;
+    padding-right: clamp(14px, 4vw, 20px) !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 2. Top Header Mobile: Fix cutoff of ES/EN, Theme, and Burger */
+  [data-nav] > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 14px !important;
+    gap: 8px !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+  }
+  [data-nav] a[href="#inicio"] {
+    gap: 7px !important;
+    flex: 0 1 auto !important;
+  }
+  [data-nav] a[href="#inicio"] img {
+    width: 26px !important;
+    height: 26px !important;
+  }
+  [data-nav] a[href="#inicio"] span span:first-child {
+    font-size: 7px !important;
+    letter-spacing: .16em !important;
+  }
+  [data-nav] a[href="#inicio"] span span:last-child {
+    font-size: 12px !important;
+  }
+  [data-nav] div[style*="margin-left:auto"] {
+    gap: 6px !important;
+    flex-shrink: 0 !important;
+  }
+  [data-nav] button[data-lang] {
+    padding: 4px 6px !important;
+    font-size: 10.5px !important;
+  }
+  [data-nav] button[aria-label="Cambiar tema"] {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  [data-nav] button[data-burger] {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  /* 3. Hero Section (#inicio) Mobile Polish */
+  #inicio > div[style*="justify-content:center"] {
+    padding: 85px 16px 36px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  #inicio h1 {
+    font-size: clamp(23px, 6.8vw, 32px) !important;
+    line-height: 1.1 !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+  }
+  #inicio h1 span, #inicio h1 em {
+    display: inline !important;
+  }
+  #inicio p[data-reveal] {
+    font-size: 13.5px !important;
+    line-height: 1.5 !important;
+    max-width: 100% !important;
+  }
+  #inicio [data-reveal] div[style*="display:flex;align-items:center;justify-content:center;gap:7px"] {
+    margin-top: 14px !important;
+  }
+  #inicio [data-reveal] div[style*="display:flex;flex-wrap:wrap;gap:10px"] {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+  #inicio a[href="#ejes"],
+  #inicio a[href="#nosotros"] {
+    padding: 9px 15px !important;
+    font-size: 12px !important;
+    white-space: nowrap !important;
+  }
+  #inicio dl {
+    width: 100% !important;
+    padding: 14px 16px 18px !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px 14px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 4. Marquee Ticker: Clip perfectly */
+  div[style*="animation:mq"] {
+    max-width: 100vw !important;
+  }
+  div[aria-hidden="true"][style*="animation:mq"] {
+    overflow: hidden !important;
+    contain: paint !important;
+    max-width: 100vw !important;
+  }
+
+  /* 5. About Us (#nosotros) Mobile Polish */
+  #nosotros {
+    padding: 46px 16px !important;
+    max-width: 100vw !important;
+    overflow: hidden !important;
+    contain: paint !important;
+  }
+  #nosotros div[style*="width:600px;height:600px"] {
+    display: none !important;
+  }
+  #nosotros h2 {
+    font-size: clamp(23px, 6.2vw, 32px) !important;
+    line-height: 1.12 !important;
+  }
+  #nosotros p[data-en*="We connect coastal"] {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+  }
+  #nosotros div[style*="border-top:1px solid var(--line)"] {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+    width: 100% !important;
+  }
+  #nosotros div[style*="width:1px;height:34px"] {
+    display: none !important;
+  }
+  #nosotros div[style*="border-top:1px solid var(--line)"] > div {
+    text-align: center !important;
+  }
+  #nosotros div[style*="border-top:1px solid var(--line)"] [style*="font-weight:700"] {
+    font-size: 24px !important;
+  }
+  #nosotros div[style*="border-top:1px solid var(--line)"] [style*="letter-spacing:.12em"] {
+    font-size: 8.5px !important;
+  }
+  #nosotros button[data-eje-cta],
+  #nosotros a[href="#ejes"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+  .m3-about-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .m3-about-card img {
+    min-height: 270px !important;
+    aspect-ratio: 16 / 11 !important;
+  }
+
+  /* 6. Blog section (#news) Mobile Clip */
+  #news {
+    overflow-x: clip !important;
+    contain: paint !important;
+    max-width: 100vw !important;
+  }
+  .m3-blog-grid {
+    margin-left: -16px !important;
+    margin-right: -16px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* 7. Cal.com section (#agenda) Mobile Polish */
+  #agenda {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    padding: 44px 0 36px !important;
+  }
+  #agenda h2 {
+    font-size: clamp(20px, 5.5vw, 26px) !important;
+    line-height: 1.15 !important;
+  }
+  #agenda p {
+    font-size: 13px !important;
+  }
+
+  /* 8. Modals offscreen clip */
+  #legalModal,
+  #blogReaderModal,
+  #propositoModal,
+  #ejeModal {
+    max-width: 100vw !important;
+    overflow: hidden !important;
+  }
 }
 
 @media (max-width: 768px) {
@@ -2612,7 +2818,7 @@ body[data-theme="light"] .eje-btn-primary{
 
 <!-- ==================== ABOUT US ULTRA MINIMALISTA & PERSUASIVO ==================== -->
 <section id="nosotros" style="padding:clamp(56px,7.5vw,96px) clamp(20px,5vw,52px);background:var(--bg);position:relative;overflow:hidden">
-  <div style="position:absolute;width:600px;height:600px;border-radius:999px;background:radial-gradient(circle,rgba(5,168,239,.08) 0%,transparent 70%);top:-150px;right:-100px;pointer-events:none"></div>
+  <div class="nosotros-ambient-circle" style="position:absolute;width:600px;height:600px;border-radius:999px;background:radial-gradient(circle,rgba(5,168,239,.08) 0%,transparent 70%);top:-150px;right:-100px;pointer-events:none"></div>
 
   <div style="width:min(85%, 1380px);margin:0 auto">
     <div data-two style="display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(32px,5vw,68px);align-items:center">
@@ -5095,3 +5301,4 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 </body>
 </html>
+
