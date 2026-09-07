@@ -310,37 +310,41 @@ body[data-theme="light"] [data-eje-photo-wrap]{
   box-shadow:0 30px 70px -20px rgba(8,44,70,.25), 0 0 45px -15px rgba(var(--eje-rgb),.25);
   border-color:rgba(8,44,70,.14);
 }
-/* --- CTAs de Ejes --- */
+/* --- CTAs de Ejes (Diseño Editorial Pro - Cápsula Compacta & Refinada) --- */
 [data-eje-cta]{
-  margin-top:24px;
+  margin-top:22px;
   display:inline-flex;
   align-items:center;
-  gap:10px;
-  padding:11px 22px 11px 18px;
+  gap:8px;
+  height:40px;
+  padding:0 20px;
   border-radius:999px;
   background:rgba(var(--eje-rgb), .12);
-  border:1px solid rgba(var(--eje-rgb), .38);
+  border:1px solid rgba(var(--eje-rgb), .36);
   color:var(--eje-accent);
-  font-family:'IBM Plex Mono',monospace;
-  font-size:11px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
+  font-family:inherit;
+  font-size:13px;
+  letter-spacing:.015em;
+  text-transform:none;
   font-weight:600;
   cursor:pointer;
-  box-shadow:0 4px 18px rgba(0,0,0,.35), 0 0 16px -4px rgba(var(--eje-rgb), .25);
+  box-shadow:0 4px 16px -2px rgba(0,0,0,.4), 0 0 14px -4px rgba(var(--eje-rgb), .3);
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
-  transition:all .35s cubic-bezier(.22,1,.36,1);
+  transition:all .32s cubic-bezier(.22,1,.36,1);
+  white-space:nowrap;
+  box-sizing:border-box;
 }
 [data-eje-cta]:hover{
   background:var(--eje-accent);
   color:#04141F;
   border-color:var(--eje-accent);
-  box-shadow:0 8px 28px rgba(0,0,0,.55), 0 0 24px rgba(var(--eje-rgb), .65);
-  transform:translateY(-2px) scale(1.02);
+  box-shadow:0 8px 24px -2px rgba(var(--eje-rgb), .55), 0 2px 6px rgba(0,0,0,.35);
+  transform:translateY(-2px);
 }
 [data-eje-cta] svg{
-  transition:transform .35s cubic-bezier(.22,1,.36,1);
+  transition:transform .3s cubic-bezier(.22,1,.36,1);
+  flex-shrink:0;
 }
 [data-eje-cta]:hover svg{
   transform:translateX(4px);
@@ -1456,13 +1460,27 @@ body[data-theme="light"] [data-eje-cta]:hover{
   #nosotros div[style*="border-top:1px solid var(--line)"] [style*="letter-spacing:.12em"] {
     font-size: 8.5px !important;
   }
+  #nosotros div[style*="margin-top:clamp(24px"] {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
   #nosotros button[data-eje-cta],
   #nosotros a[href="#ejes"] {
-    width: 100% !important;
+    flex: 1 1 135px !important;
+    width: auto !important;
     max-width: 100% !important;
+    height: 42px !important;
+    padding: 0 16px !important;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    border-radius: 999px !important;
     justify-content: center !important;
     text-align: center !important;
     box-sizing: border-box !important;
+    white-space: nowrap !important;
   }
   .m3-about-card {
     width: 100% !important;
@@ -1611,12 +1629,39 @@ body[data-theme="light"] [data-eje-cta]:hover{
   }
 
   [data-eje-cta] {
+    display: inline-flex !important;
+    width: auto !important;
+    max-width: max-content !important;
+    align-self: flex-start !important;
+    height: 40px !important;
+    padding: 0 20px !important;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    letter-spacing: .015em !important;
+    text-transform: none !important;
+    margin-top: 16px !important;
+    border-radius: 999px !important;
+    box-sizing: border-box !important;
+    white-space: nowrap !important;
+  }
+
+  .footer-cta-actions {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
     width: 100% !important;
+  }
+  .footer-cta-btn-primary,
+  .footer-cta-btn-wa {
+    flex: 1 1 135px !important;
+    width: auto !important;
+    height: 42px !important;
+    padding: 0 16px !important;
+    font-size: 12.5px !important;
     justify-content: center !important;
     text-align: center !important;
-    padding: 12.5px 20px !important;
-    font-size: 13px !important;
-    margin-top: 18px !important;
+    white-space: nowrap !important;
+    box-sizing: border-box !important;
   }
 
   /* ================================================================
@@ -2857,14 +2902,14 @@ body[data-theme="light"] .eje-btn-primary{
           </div>
         </div>
 
-        <!-- Acciones Directas M3: Alineación Perfecta y Alta Conversión -->
-        <div style="margin-top:clamp(24px,3.2vh,32px);display:flex;flex-wrap:wrap;align-items:center;gap:14px">
-          <button type="button" data-eje-cta="medio-ambiente" data-en="Partner strategically with us →" style="display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 26px;border-radius:999px;white-space:nowrap;background:var(--amber);color:#082C46;font-family:inherit;font-size:13.5px;font-weight:700;letter-spacing:.01em;box-shadow:0 8px 24px -6px rgba(255,195,28,.7), 0 2px 6px rgba(0,0,0,.35);border:1px solid rgba(255,195,28,.4);cursor:pointer;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease;box-sizing:border-box;line-height:1" style-hover="transform:translateY(-2px);box-shadow:0 14px 34px -8px rgba(255,195,28,.9)">
-            <span>Iniciar alianza estratégica</span>
-            <span aria-hidden="true" style="margin-left:7px;font-size:15px;transition:transform .25s ease">→</span>
+        <!-- Acciones Directas: Proporción Refinada y Alta Conversión -->
+        <div style="margin-top:clamp(22px,2.8vh,28px);display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+          <button type="button" data-eje-cta="medio-ambiente" data-en="Start partnership →" style="display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 22px;border-radius:999px;white-space:nowrap;background:var(--amber);color:#082C46;font-family:inherit;font-size:13px;font-weight:700;letter-spacing:.01em;box-shadow:0 6px 20px -5px rgba(255,195,28,.65), 0 2px 5px rgba(0,0,0,.35);border:1px solid rgba(255,195,28,.4);cursor:pointer;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease;box-sizing:border-box;line-height:1" style-hover="transform:translateY(-2px);box-shadow:0 12px 30px -6px rgba(255,195,28,.85)">
+            <span>Iniciar alianza</span>
+            <span aria-hidden="true" style="margin-left:6px;font-size:14px;transition:transform .25s ease">→</span>
           </button>
-          <a href="#ejes" data-en="Explore our 5 focus areas" style="display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 24px;border-radius:999px;white-space:nowrap;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#EDF4F7;font-family:inherit;font-size:13.5px;font-weight:600;letter-spacing:.01em;transition:all .3s ease;box-sizing:border-box;line-height:1;text-decoration:none" style-hover="background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#fff;transform:translateY(-2px)">
-            Explorar nuestros 5 ejes
+          <a href="#ejes" data-en="Explore 5 areas" style="display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 20px;border-radius:999px;white-space:nowrap;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#EDF4F7;font-family:inherit;font-size:13px;font-weight:600;letter-spacing:.01em;transition:all .3s ease;box-sizing:border-box;line-height:1;text-decoration:none" style-hover="background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#fff;transform:translateY(-2px)">
+            Ver 5 ejes
           </a>
         </div>
       </div>
@@ -3007,7 +3052,7 @@ body[data-theme="light"] .eje-btn-primary{
 
             <div>
               <button type="button" data-eje-cta="medio-ambiente">
-                <span data-en="Join conservation actions">Vincularme a acciones de conservación</span>
+                <span data-en="Support conservation">Apoyar conservación</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
             </div>
@@ -3081,7 +3126,7 @@ body[data-theme="light"] .eje-btn-primary{
 
             <div>
               <button type="button" data-eje-cta="salud-mental">
-                <span data-en="Join community care networks">Sumarme a redes de cuidado comunitario</span>
+                <span data-en="Support mental health">Cuidar salud mental</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
             </div>
@@ -3137,7 +3182,7 @@ body[data-theme="light"] .eje-btn-primary{
 
             <div>
               <button type="button" data-eje-cta="deporte">
-                <span data-en="Support sports schools and equipment">Impulsar escuelas y dotación deportiva</span>
+                <span data-en="Support youth sports">Impulsar deporte</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
             </div>
@@ -3211,7 +3256,7 @@ body[data-theme="light"] .eje-btn-primary{
 
             <div>
               <button type="button" data-eje-cta="economia-solidaria">
-                <span data-en="Partner with circuits and local production">Aliarme a circuitos y producción local</span>
+                <span data-en="Support local ventures">Sembrar proyectos</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
             </div>
@@ -3265,12 +3310,12 @@ body[data-theme="light"] .eje-btn-primary{
               <span data-en="Community Journalism &amp; Peace Narratives" style="display:block;margin-top:6px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#FF8A3D">PERIODISMO COMUNITARIO &amp; NARRATIVAS DE PAZ</span>
             </div>
 
-            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:24px">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:20px">
               <button type="button" data-eje-cta="pacific-news" style="margin-top:0">
-                <span data-en="Collaborate with Pacific News">Colaborar con narrativas y comunicación</span>
+                <span data-en="Amplify local voices">Sumar voces</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
-              <a href="#news" data-en="Explore Pacific News →" style="display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#FF8A3D;font-weight:600;padding:10px 14px;opacity:.88;transition:opacity .2s ease" style-hover="opacity:1">Explorar noticias →</a>
+              <a href="#news" data-en="Explore news →" style="display:inline-flex;align-items:center;gap:6px;font-family:inherit;font-size:12.5px;letter-spacing:.02em;color:#FF8A3D;font-weight:600;padding:8px 12px;opacity:.9;transition:opacity .2s ease" style-hover="opacity:1">Ver noticias →</a>
             </div>
           </div>
 
@@ -3701,12 +3746,12 @@ body[data-theme="light"] .eje-btn-primary{
       </div>
       <div class="footer-cta-actions">
         <button type="button" class="footer-cta-btn-primary" onclick="openEjeOnboarding('medio-ambiente')">
-          <span>Iniciar Alianza Estratégica</span>
+          <span>Iniciar alianza</span>
           <span aria-hidden="true">→</span>
         </button>
         <a href="https://wa.me/573159636154?text=Hola%20Corporaci%C3%B3n%20Soy%20Pac%C3%ADfico%2C%20quisiera%20conectar%20para%20una%20alianza%20o%20apoyo." target="_blank" rel="noopener" class="footer-cta-btn-wa">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.4 4.8 5-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 0 1 6.6 12.2 7.9 7.9 0 0 1-9.9 2.6l-.5-.2-2.9.7.8-2.7-.3-.5A7.9 7.9 0 0 1 12 4.1Zm-3 4.1c-.3 0-.7.1-1 .4-.4.4-.9 1-.9 2 0 1.1.7 2.1 1.6 3.2 1 1.1 2.3 2.1 3.9 2.6 1.4.4 2 .3 2.6.2.6-.1 1.3-.6 1.5-1.2.2-.6.2-1 .1-1.1 0-.1-.2-.2-.4-.3l-1.6-.7c-.2-.1-.4-.1-.6.1l-.7.8c-.1.2-.3.2-.5.1a6.4 6.4 0 0 1-1.9-1.2 7 7 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.6-.7c.1-.2.1-.4 0-.6l-.6-1.5c-.2-.4-.3-.4-.5-.4h-.5Z"/></svg>
-          <span>Línea Directa WhatsApp</span>
+          <span>WhatsApp directo</span>
         </a>
       </div>
     </div>
