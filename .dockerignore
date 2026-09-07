@@ -1,0 +1,14 @@
+.git
+.gitignore
+.dockerignore
+.claude
+.thumbnail
+node_modules
+npm-debug.log
+README.md
+scratch/
+test_*.py
+uploads/*.pdf
+uploads/*.pptx
+*.log
+docker-compose*.yml

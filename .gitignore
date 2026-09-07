@@ -1,0 +1,20 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editores y entornos
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.claude/
+.thumbnail
+
+# Archivos temporales y de pruebas locales
+scratch/
+*.log
+.system_generated/
+test_requirements.py
