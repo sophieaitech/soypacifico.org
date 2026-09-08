@@ -3271,64 +3271,106 @@ body[data-theme="light"] .eje-btn-primary{
   }
 }
 
-/* --- Suite Ejecutiva Minimalista e Integrada (Cal.com & Dirección) --- */
+/* --- Material Design 3: Suite Ejecutiva Full-Width (Cal.com & Dirección) --- */
 .cal-dark-section {
   position: relative;
   width: 100%;
-  padding: clamp(60px, 8vw, 100px) 0;
-  background: radial-gradient(circle at 50% 0%, rgba(255, 195, 28, 0.07) 0%, rgba(3, 6, 10, 1) 75%);
+  padding: clamp(64px, 8.5vw, 110px) 0;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 195, 28, 0.09) 0%, rgba(5, 168, 239, 0.05) 30%, #03080F 70%);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
   color: #fff;
 }
-.cal-suite-container {
-  width: min(92%, 1220px);
-  margin: clamp(26px, 3.8vw, 40px) auto 0;
+
+/* Tarjeta Elevada de Dirección Ejecutiva (Material Design 3 Surface Container) */
+.cal-exec-bar {
+  width: min(94%, 1320px);
+  margin: clamp(24px, 3.5vw, 36px) auto 0;
+  padding: clamp(20px, 2.5vw, 28px) clamp(20px, 3vw, 36px);
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(14, 23, 34, 0.88) 0%, rgba(7, 13, 20, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   display: grid;
-  grid-template-columns: minmax(320px, 380px) 1fr;
-  gap: clamp(20px, 2.8vw, 32px);
-  align-items: start;
+  grid-template-columns: auto 1fr auto;
+  gap: clamp(16px, 2.5vw, 32px);
+  align-items: center;
 }
-@media (max-width: 960px) {
-  .cal-suite-container {
+@media (max-width: 1060px) {
+  .cal-exec-bar {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 }
-.cal-exec-sidebar {
-  padding: clamp(24px, 3vw, 32px);
-  border-radius: 20px;
-  background: linear-gradient(160deg, rgba(14, 22, 32, 0.85) 0%, rgba(6, 10, 16, 0.95) 100%);
+
+/* Chips Tonal Material 3 */
+.cal-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all .2s ease;
 }
-.cal-calendar-panel {
-  border-radius: 20px;
-  background: linear-gradient(160deg, rgba(10, 16, 24, 0.75) 0%, rgba(4, 7, 12, 0.95) 100%);
+.cal-chip:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Contenedor Full-Width del Calendario (Material Design 3 High-Elevation Surface) */
+.cal-fullwidth-card {
+  width: min(94%, 1320px);
+  margin: clamp(20px, 2.8vw, 30px) auto 0;
+  border-radius: 28px;
+  background: #040A10;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 30px 90px -20px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.04), 0 0 40px rgba(255, 195, 28, 0.04);
   overflow: hidden;
   position: relative;
-  min-height: 560px;
 }
+
+/* Barra superior de estado del calendario */
+.cal-card-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px clamp(20px, 2.5vw, 32px);
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Embebido de Cal.com a Pantalla Completa */
 #my-cal-inline-reunion {
-  width: 100%;
-  height: 100%;
-  min-height: 560px;
-  background: transparent;
-  overflow: visible;
+  width: 100% !important;
+  min-height: 680px;
+  height: 680px;
+  background: #040A10;
+  overflow: visible !important;
 }
 #my-cal-inline-reunion iframe {
   width: 100% !important;
-  height: 100% !important;
-  min-height: 560px !important;
+  min-height: 680px !important;
+  height: 680px !important;
   border: none !important;
   background: transparent !important;
+}
+@media (max-width: 768px) {
+  #my-cal-inline-reunion,
+  #my-cal-inline-reunion iframe {
+    min-height: 600px !important;
+    height: 600px !important;
+  }
 }
 
 /* Nuevos Botones de "Nosotros" (Glassmorphism & Branding Azul) */
@@ -4090,116 +4132,143 @@ body[data-theme="light"] #nosotros h2 em {
 
 <!-- ==================== SESIÓN DE LIDERAZGO & AGENDAMIENTO ESTRATÉGICO: FRANKLIN CORRALES DELGADO ==================== -->
 <section id="agenda" class="cal-dark-section" aria-label="Agendar Reunión Estratégica con Franklin Corrales Delgado - Dirección Ejecutiva">
-  <!-- Aura de Iluminación Ambiental Superior -->
-  <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(95vw,1100px);height:320px;background:radial-gradient(circle,rgba(255,195,28,0.08) 0%,rgba(5,168,239,0.05) 45%,rgba(0,0,0,0) 70%);pointer-events:none;z-index:0"></div>
+  <!-- Aura de Iluminación Ambiental Superior Material Design -->
+  <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(95vw,1200px);height:360px;background:radial-gradient(circle,rgba(255,195,28,0.12) 0%,rgba(5,168,239,0.06) 40%,rgba(0,0,0,0) 70%);pointer-events:none;z-index:0"></div>
 
-  <!-- Encabezado Minimalista y Limpio -->
-  <div data-reveal style="position:relative;z-index:1;width:min(92%,860px);margin:0 auto;text-align:center;padding:0 16px">
-    <div style="display:inline-flex;align-items:center;gap:8px;padding:5px 15px;border-radius:999px;background:rgba(255,195,28,0.09);border:1px solid rgba(255,195,28,0.28)">
+  <!-- Encabezado Proporcional y de Alto Impacto Ejecutivo -->
+  <div data-reveal style="position:relative;z-index:1;width:min(92%,920px);margin:0 auto;text-align:center;padding:0 16px">
+    <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;background:rgba(255,195,28,0.1);border:1px solid rgba(255,195,28,0.3);box-shadow:0 0 20px rgba(255,195,28,0.12)">
       <span style="width:7px;height:7px;border-radius:999px;background:#FFC31C;box-shadow:0 0 10px #FFC31C"></span>
-      <span data-en="EXECUTIVE AGENDA · DIRECT CONTACT" style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#FFC31C;font-weight:700">AGENDA EJECUTIVA · DIÁLOGO DIRECTO</span>
+      <span data-en="EXECUTIVE DIRECTORATE · STRATEGIC PARTNERSHIPS" style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#FFC31C;font-weight:700">DESPACHO DE DIRECCIÓN EJECUTIVA · ALIANZAS ESTRATÉGICAS</span>
     </div>
 
-    <h2 style="margin-top:14px;color:#fff;font-size:clamp(26px,3.6vw,42px);line-height:1.12;letter-spacing:-.035em;font-weight:600">
-      <span data-en="Meet with ">Coordina una sesión con </span>
+    <h2 style="margin-top:16px;color:#fff;font-size:clamp(28px,3.8vw,48px);line-height:1.08;letter-spacing:-.035em;font-weight:600;text-wrap:balance">
+      <span data-en="Direct Dialogue with ">Diálogo Directo con </span>
       <span style="background:linear-gradient(135deg,#FFE27A 0%,#FFC31C 45%,#E46816 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:inline-block">Franklin Corrales Delgado</span>
     </h2>
 
-    <p data-en="Official channel for institutional partnerships, project co-financing, and direct social investment across the Colombian Pacific." style="margin:10px auto 0;font-size:clamp(14px,1.2vw,15.5px);line-height:1.6;color:rgba(255,255,255,.72);max-width:640px;text-wrap:pretty">
-      Canal oficial para alianzas institucionales, cofinanciación de proyectos e inversión social directa en el Pacífico colombiano.
+    <p data-en="Official high-level dialogue channel: international partnerships, project co-financing, and strategic social investment across the Pacific coast." style="margin:12px auto 0;font-size:clamp(14px,1.25vw,16px);line-height:1.62;color:rgba(255,255,255,.76);max-width:720px;text-wrap:pretty">
+      Canal oficial de interlocución de alto nivel: alianzas internacionales, cofinanciación de proyectos e inversión social directa en el litoral Pacífico colombiano.
     </p>
   </div>
 
-  <!-- Suite Ejecutiva Integrada (2 Columnas: Perfil y Cal.com) -->
-  <div data-reveal class="cal-suite-container">
-    
-    <!-- Columna Izquierda: Perfil Ejecutivo y Contacto Inmediato -->
-    <div class="cal-exec-sidebar">
-      <div style="display:flex;align-items:center;gap:14px">
-        <div style="position:relative;width:60px;height:60px;border-radius:18px;background:linear-gradient(135deg,#09331D 0%,#03140C 100%);border:2px solid #FFC31C;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(255,195,28,0.2);flex-shrink:0">
-          <img src="assets/logo-mark.webp" alt="Soy Pacífico" style="width:34px;height:34px;object-fit:contain">
-          <span style="position:absolute;bottom:-3px;right:-3px;width:18px;height:18px;border-radius:999px;background:#27C93F;border:2px solid #000;display:flex;align-items:center;justify-content:center;color:#000;font-size:10px;font-weight:900" title="Verificado">✓</span>
-        </div>
-        <div>
-          <h3 style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-.02em;margin:0">Franklin Corrales Delgado</h3>
-          <div style="margin-top:2px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#FFC31C;letter-spacing:.06em;text-transform:uppercase;font-weight:600">
-            <span data-en="Founder & Executive Director">Fundador &amp; Director Ejecutivo</span>
-          </div>
-          <div style="margin-top:4px;font-size:11.5px;color:rgba(255,255,255,.55)">
-            <span>Corporación Soy Pacífico</span>
-          </div>
-        </div>
+  <!-- Barra Ejecutiva Superior Material Design 3 (Perfil Franklin Corrales Delgado) -->
+  <div data-reveal class="cal-exec-bar">
+    <!-- Identidad y Cita de Dirección -->
+    <div style="display:flex;align-items:center;gap:18px">
+      <div style="position:relative;width:68px;height:68px;border-radius:20px;background:linear-gradient(135deg,#0A2616 0%,#03140C 100%);border:2px solid #FFC31C;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(255,195,28,0.25);flex-shrink:0">
+        <img src="assets/logo-mark.webp" alt="Soy Pacífico" style="width:38px;height:38px;object-fit:contain">
+        <span style="position:absolute;bottom:-3px;right:-3px;width:20px;height:20px;border-radius:999px;background:#27C93F;border:2px solid #040A10;display:flex;align-items:center;justify-content:center;color:#000;font-size:11px;font-weight:900" title="Verificado">✓</span>
       </div>
-
-      <div style="padding:12px 14px;border-radius:12px;background:rgba(255,255,255,0.03);border-left:3px solid #FFC31C;border-top:1px solid rgba(255,255,255,0.06);border-right:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06)">
-        <p style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:15px;line-height:1.45;color:rgba(255,255,255,0.9)">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <h3 style="font-size:clamp(18px,1.9vw,22px);font-weight:700;color:#fff;letter-spacing:-.02em;margin:0">Franklin Corrales Delgado</h3>
+          <span style="display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:999px;background:rgba(39,201,63,0.15);border:1px solid rgba(39,201,63,0.35);font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#4ADE80;font-weight:600">
+            ✓ <span data-en="Verified Leadership">Liderazgo Verificado</span>
+          </span>
+        </div>
+        <div style="margin-top:3px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#FFC31C;letter-spacing:.08em;text-transform:uppercase;font-weight:600">
+          <span data-en="Founder & Executive Director · Corporación Soy Pacífico">Fundador &amp; Director Ejecutivo · Corporación Soy Pacífico</span>
+        </div>
+        <p style="margin:5px 0 0;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:14.5px;line-height:1.4;color:rgba(255,255,255,0.78);max-width:48ch">
           <span data-en='“Every strategic alliance translates into direct territorial dignity and long-term capacity for our communities.”'>“Cada alianza estratégica se traduce en dignidad territorial directa y capacidad instalada de largo aliento para nuestras comunidades.”</span>
         </p>
       </div>
+    </div>
 
-      <!-- Detalles de la Reunión -->
-      <div style="display:flex;flex-direction:column;gap:9px;padding:12px 0;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);font-size:12.5px;color:rgba(255,255,255,0.8)">
-        <div style="display:flex;align-items:center;gap:8px">
-          <span style="color:#FFC31C">⏱️</span>
-          <span data-en="30 to 45 min strategic session">30 a 45 min de diálogo estratégico</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px">
-          <span style="color:#4ADE80">💻</span>
-          <span data-en="Google Meet (Link generated instantly)">Google Meet (Enlace automático)</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px">
-          <span style="color:#70A9FF">📍</span>
-          <span data-en="Virtual or on-site in territory">Virtual o presencial en territorio</span>
-        </div>
+    <!-- Chips Informativos de Modalidad (Material Design 3 Tonal Chips) -->
+    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+      <div class="cal-chip">
+        <span style="color:#FFC31C">⏱️</span>
+        <span data-en="30 - 45 min">30 a 45 min</span>
       </div>
-
-      <!-- Acciones directas alternativas -->
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <a href="https://wa.me/573159636154?text=Hola%20Franklin%20Corrales%2C%20quisiera%20coordinar%20un%20espacio%20de%20di%C3%A1logo%20institucional%20con%20la%20Corporaci%C3%B3n%20Soy%20Pac%C3%ADfico." target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:12px;background:#27C93F;color:#02190C;font-size:13px;font-weight:700;text-decoration:none;box-shadow:0 4px 16px rgba(39,201,63,0.3);transition:all .2s ease" style-hover="transform:translateY(-1px);box-shadow:0 6px 20px rgba(39,201,63,0.45)">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
-          <span data-en="Chat via WhatsApp">WhatsApp Directo</span>
-        </a>
-        <a href="mailto:direccion@soypacifico.org" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border-radius:12px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:#fff;font-size:12.5px;font-weight:500;text-decoration:none;transition:background .2s ease" style-hover="background:rgba(255,255,255,0.12)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <span>direccion@soypacifico.org</span>
-        </a>
+      <div class="cal-chip">
+        <span style="color:#4ADE80">💻</span>
+        <span data-en="Google Meet">Google Meet</span>
+      </div>
+      <div class="cal-chip">
+        <span style="color:#70A9FF">📍</span>
+        <span data-en="Virtual or Territory">Virtual o Territorio</span>
       </div>
     </div>
 
-    <!-- Columna Derecha: Panel Limpio de Cal.com -->
-    <div class="cal-calendar-panel">
-      <!-- Cal inline embed code begins -->
-      <div id="my-cal-inline-reunion"></div>
-      <script type="text/javascript">
-        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-        Cal("init", "reunion", {origin:"https://app.cal.com"});
-        Cal.config = Cal.config || {};
-        Cal.config.forwardQueryParams = true;
+    <!-- Canales Directos Inmediatos -->
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <a href="https://wa.me/573159636154?text=Hola%20Franklin%20Corrales%2C%20quisiera%20coordinar%20un%20espacio%20de%20di%C3%A1logo%20institucional%20con%20la%20Corporaci%C3%B3n%20Soy%20Pac%C3%ADfico." target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:14px;background:#27C93F;color:#02190C;font-size:13px;font-weight:700;text-decoration:none;box-shadow:0 6px 20px rgba(39,201,63,0.35);transition:all .2s ease" style-hover="transform:translateY(-1px);box-shadow:0 8px 24px rgba(39,201,63,0.45)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+        <span data-en="WhatsApp Direct">WhatsApp Directo</span>
+      </a>
+      <a href="mailto:direccion@soypacifico.org" style="display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);color:#fff;font-size:12.5px;font-weight:500;text-decoration:none;transition:all .2s ease" style-hover="background:rgba(255,255,255,0.12)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>direccion@soypacifico.org</span>
+      </a>
+    </div>
+  </div>
 
-        Cal.ns.reunion("inline", {
-          elementOrSelector:"#my-cal-inline-reunion",
-          config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
-          calLink: "soypacifico/reunion",
-        });
-
-        Cal.ns.reunion("ui", {
-          "theme":"dark",
-          "cssVarsPerTheme":{
-            "dark":{
-              "cal-brand":"#FFC31C",
-              "cal-bg":"transparent",
-              "cal-bg-muted":"rgba(255,255,255,0.05)",
-              "cal-text":"#ffffff",
-              "cal-text-muted":"#94a3b8"
-            }
-          },
-          "hideEventTypeDetails":true,
-          "layout":"month_view"
-        });
-      </script>
-      <!-- Cal inline embed code ends -->
+  <!-- Tarjeta Full-Width del Calendario (Material Design 3 Extended Canvas) -->
+  <div data-reveal class="cal-fullwidth-card">
+    <!-- Toolbar superior de disponibilidad en vivo -->
+    <div class="cal-card-toolbar">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="position:relative;display:flex;width:9px;height:9px">
+          <span style="position:absolute;inset:0;border-radius:999px;background:#27C93F;opacity:.75;animation:ping 1.5s cubic-bezier(0,0,.2,1) infinite"></span>
+          <span style="position:relative;display:inline-flex;border-radius:999px;width:9px;height:9px;background:#27C93F"></span>
+        </span>
+        <span data-en="OFFICIAL AGENDA · Select an available date and time slot:" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#fff;font-weight:600">AGENDA OFICIAL · Selecciona fecha y horario disponible con Franklin Corrales:</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <span data-en="Instant confirmation · Real-time sync" style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:rgba(255,255,255,.5);letter-spacing:.06em">Confirmación instantánea · Sincronización en tiempo real</span>
+      </div>
     </div>
 
+    <!-- Embebido Full-Width sin restricciones ni scrollbars externos -->
+    <div id="my-cal-inline-reunion"></div>
+    <script type="text/javascript">
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", "reunion", {origin:"https://app.cal.com"});
+      Cal.config = Cal.config || {};
+      Cal.config.forwardQueryParams = true;
+
+      Cal.ns.reunion("inline", {
+        elementOrSelector:"#my-cal-inline-reunion",
+        config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+        calLink: "soypacifico/reunion",
+      });
+
+      Cal.ns.reunion("ui", {
+        "theme":"dark",
+        "cssVarsPerTheme":{
+          "dark":{
+            "cal-brand":"#FFC31C",
+            "cal-bg":"#040A10",
+            "cal-bg-muted":"rgba(255,255,255,0.04)",
+            "cal-text":"#ffffff",
+            "cal-text-muted":"#94a3b8",
+            "cal-border":"rgba(255,255,255,0.08)"
+          }
+        },
+        "hideEventTypeDetails":true,
+        "layout":"month_view"
+      });
+    </script>
+  </div>
+
+  <!-- Reaseguros Institucionales Material Design 3 -->
+  <div style="width:min(94%, 1320px);margin:18px auto 0;display:flex;justify-content:center;align-items:center;gap:clamp(14px, 3vw, 28px);flex-wrap:wrap;font-size:12px;color:rgba(255,255,255,0.5)">
+    <div style="display:inline-flex;align-items:center;gap:6px">
+      <span>🛡️</span>
+      <span data-en="Institutional confidentiality guaranteed">Confidencialidad institucional garantizada</span>
+    </div>
+    <span style="opacity:.25">·</span>
+    <div style="display:inline-flex;align-items:center;gap:6px">
+      <span>⚡</span>
+      <span data-en="Instant Google Meet & Calendar invite">Enlace automático a Google Meet &amp; Calendar</span>
+    </div>
+    <span style="opacity:.25">·</span>
+    <div style="display:inline-flex;align-items:center;gap:6px">
+      <span>🤝</span>
+      <span data-en="Direct channel with Executive Directorate">Canal directo con el despacho de Dirección</span>
+    </div>
   </div>
 </section>
 
