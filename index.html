@@ -3251,6 +3251,70 @@ body[data-theme="light"] .eje-btn-primary{
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   overflow: visible;
   color: #fff;
+  transition: background 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+}
+.agenda-ambient-aura {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(95vw, 1200px);
+  height: 360px;
+  background: radial-gradient(circle, rgba(255, 195, 28, 0.12) 0%, rgba(5, 168, 239, 0.06) 40%, rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+  transition: background 0.4s ease;
+}
+.agenda-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: rgba(255, 195, 28, 0.1);
+  border: 1px solid rgba(255, 195, 28, 0.3);
+  box-shadow: 0 0 20px rgba(255, 195, 28, 0.12);
+  transition: all 0.3s ease;
+}
+.agenda-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #FFC31C;
+  box-shadow: 0 0 10px #FFC31C;
+}
+.agenda-badge-text {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #FFC31C;
+  font-weight: 700;
+}
+.agenda-title {
+  margin-top: 16px;
+  color: #fff;
+  font-size: clamp(28px, 3.8vw, 48px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+  text-wrap: balance;
+  transition: color 0.3s ease;
+}
+.agenda-title-gradient {
+  background: linear-gradient(135deg, #FFE27A 0%, #FFC31C 45%, #E46816 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+.agenda-desc {
+  margin: 12px auto 0;
+  font-size: clamp(14px, 1.25vw, 16px);
+  line-height: 1.62;
+  color: rgba(255, 255, 255, 0.76);
+  max-width: 720px;
+  text-wrap: pretty;
+  transition: color 0.3s ease;
 }
 .cal-embed-container {
   width: 100%;
@@ -3259,6 +3323,7 @@ body[data-theme="light"] .eje-btn-primary{
   padding: 0 clamp(10px, 2vw, 24px);
   position: relative;
   z-index: 2;
+  transition: all 0.3s ease;
 }
 #my-cal-inline-reunion {
   width: 100% !important;
@@ -3271,6 +3336,80 @@ body[data-theme="light"] .eje-btn-primary{
   min-height: 660px !important;
   border: none !important;
   background: transparent !important;
+}
+.agenda-mail-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+.agenda-mail-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* === Modo Claro para Agenda (#agenda) === */
+body[data-theme="light"] .cal-dark-section {
+  background: radial-gradient(circle at 50% 0%, rgba(255, 195, 28, 0.14) 0%, rgba(5, 168, 239, 0.06) 35%, var(--bg) 75%) !important;
+  border-top: 1px solid var(--line) !important;
+  border-bottom: 1px solid var(--line) !important;
+  color: var(--ink) !important;
+}
+body[data-theme="light"] .agenda-ambient-aura {
+  background: radial-gradient(circle, rgba(255, 195, 28, 0.18) 0%, rgba(5, 168, 239, 0.08) 45%, transparent 75%) !important;
+}
+body[data-theme="light"] .agenda-badge {
+  background: rgba(255, 195, 28, 0.18) !important;
+  border: 1px solid rgba(217, 119, 6, 0.35) !important;
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.1) !important;
+}
+body[data-theme="light"] .agenda-badge-dot {
+  background: #D97706 !important;
+  box-shadow: 0 0 10px #D97706 !important;
+}
+body[data-theme="light"] .agenda-badge-text {
+  color: #92400E !important;
+  font-weight: 700 !important;
+}
+body[data-theme="light"] .agenda-title {
+  color: #041827 !important;
+}
+body[data-theme="light"] .agenda-title span:first-child {
+  color: #041827 !important;
+}
+body[data-theme="light"] .agenda-title-gradient {
+  background: linear-gradient(135deg, #B45309 0%, #D97706 45%, #C2410C 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+body[data-theme="light"] .agenda-desc {
+  color: #2D485C !important;
+}
+body[data-theme="light"] .cal-embed-container {
+  background: #FFFFFF !important;
+  border-radius: 24px !important;
+  border: 1px solid rgba(8, 44, 70, 0.14) !important;
+  box-shadow: 0 20px 50px -15px rgba(8, 44, 70, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.8) inset !important;
+  padding: clamp(14px, 2.5vw, 24px) !important;
+}
+body[data-theme="light"] .agenda-mail-btn {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(8, 44, 70, 0.16) !important;
+  color: #082C46 !important;
+  box-shadow: 0 4px 14px rgba(8, 44, 70, 0.08) !important;
+}
+body[data-theme="light"] .agenda-mail-btn:hover {
+  background: rgba(8, 44, 70, 0.04) !important;
+  border-color: #05A8EF !important;
+  color: #05A8EF !important;
 }
 
 /* Nuevos Botones de "Nosotros" (Glassmorphism & Branding Azul) */
@@ -4033,21 +4172,21 @@ body[data-theme="light"] #nosotros h2 em {
 <!-- ==================== SESIÓN DE LIDERAZGO & AGENDAMIENTO ESTRATÉGICO: FRANKLIN CORRALES DELGADO ==================== -->
 <section id="agenda" class="cal-dark-section" aria-label="Agendar Reunión Estratégica con Franklin Corrales Delgado - Dirección Ejecutiva">
   <!-- Aura de Iluminación Ambiental Superior Material Design -->
-  <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(95vw,1200px);height:360px;background:radial-gradient(circle,rgba(255,195,28,0.12) 0%,rgba(5,168,239,0.06) 40%,rgba(0,0,0,0) 70%);pointer-events:none;z-index:0"></div>
+  <div class="agenda-ambient-aura" aria-hidden="true"></div>
 
   <!-- Encabezado Proporcional y de Alto Impacto Ejecutivo -->
   <div data-reveal style="position:relative;z-index:1;width:min(92%,920px);margin:0 auto;text-align:center;padding:0 16px">
-    <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;background:rgba(255,195,28,0.1);border:1px solid rgba(255,195,28,0.3);box-shadow:0 0 20px rgba(255,195,28,0.12)">
-      <span style="width:7px;height:7px;border-radius:999px;background:#FFC31C;box-shadow:0 0 10px #FFC31C"></span>
-      <span data-en="EXECUTIVE DIRECTORATE · STRATEGIC PARTNERSHIPS" style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#FFC31C;font-weight:700">DESPACHO DE DIRECCIÓN EJECUTIVA · ALIANZAS ESTRATÉGICAS</span>
+    <div class="agenda-badge">
+      <span class="agenda-badge-dot"></span>
+      <span class="agenda-badge-text" data-en="EXECUTIVE DIRECTORATE · STRATEGIC PARTNERSHIPS">DESPACHO DE DIRECCIÓN EJECUTIVA · ALIANZAS ESTRATÉGICAS</span>
     </div>
 
-    <h2 style="margin-top:16px;color:#fff;font-size:clamp(28px,3.8vw,48px);line-height:1.08;letter-spacing:-.035em;font-weight:600;text-wrap:balance">
+    <h2 class="agenda-title">
       <span data-en="Direct Dialogue with ">Diálogo Directo con </span>
-      <span style="background:linear-gradient(135deg,#FFE27A 0%,#FFC31C 45%,#E46816 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:inline-block">Franklin Corrales Delgado</span>
+      <span class="agenda-title-gradient">Franklin Corrales Delgado</span>
     </h2>
 
-    <p data-en="Official high-level dialogue channel: international partnerships, project co-financing, and strategic social investment across the Pacific coast." style="margin:12px auto 0;font-size:clamp(14px,1.25vw,16px);line-height:1.62;color:rgba(255,255,255,.76);max-width:720px;text-wrap:pretty">
+    <p class="agenda-desc" data-en="Official high-level dialogue channel: international partnerships, project co-financing, and strategic social investment across the Pacific coast.">
       Canal oficial de interlocución de alto nivel: alianzas internacionales, cofinanciación de proyectos e inversión social directa en el litoral Pacífico colombiano.
     </p>
   </div>
@@ -4067,21 +4206,37 @@ body[data-theme="light"] #nosotros h2 em {
         calLink: "soypacifico/reunion",
       });
 
-      Cal.ns.reunion("ui", {
-        "theme":"dark",
-        "cssVarsPerTheme":{
-          "dark":{
-            "cal-brand":"#FFC31C",
-            "cal-bg":"#0B0E14",
-            "cal-bg-muted":"#141822",
-            "cal-text":"#FFFFFF",
-            "cal-text-muted":"#94A3B8",
-            "cal-border":"rgba(255,255,255,0.1)"
-          }
-        },
-        "hideEventTypeDetails":false,
-        "layout":"month_view"
-      });
+      function applyCalTheme() {
+        const isLight = document.body.dataset.theme === 'light' || document.body.getAttribute('data-theme') === 'light';
+        const currentTheme = isLight ? "light" : "dark";
+        if (window.Cal && window.Cal.ns && window.Cal.ns.reunion) {
+          Cal.ns.reunion("ui", {
+            "theme": currentTheme,
+            "cssVarsPerTheme": {
+              "dark": {
+                "cal-brand": "#FFC31C",
+                "cal-bg": "#0B0E14",
+                "cal-bg-muted": "#141822",
+                "cal-text": "#FFFFFF",
+                "cal-text-muted": "#94A3B8",
+                "cal-border": "rgba(255,255,255,0.1)"
+              },
+              "light": {
+                "cal-brand": "#D97706",
+                "cal-bg": "#FFFFFF",
+                "cal-bg-muted": "#F8FAFC",
+                "cal-text": "#0F172A",
+                "cal-text-muted": "#475569",
+                "cal-border": "rgba(8,44,70,0.12)"
+              }
+            },
+            "hideEventTypeDetails": false,
+            "layout": "month_view"
+          });
+        }
+      }
+      window.syncCalTheme = applyCalTheme;
+      applyCalTheme();
     </script>
   </div>
 
@@ -4091,7 +4246,7 @@ body[data-theme="light"] #nosotros h2 em {
       <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
       <span data-en="Chat via WhatsApp">WhatsApp Directo con Franklin Corrales</span>
     </a>
-    <a href="mailto:direccion@soypacifico.org" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);color:#fff;font-size:12.5px;font-weight:500;text-decoration:none;transition:all .2s ease" style-hover="background:rgba(255,255,255,0.12)">
+    <a href="mailto:direccion@soypacifico.org" class="agenda-mail-btn">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       <span>direccion@soypacifico.org</span>
     </a>
@@ -4768,6 +4923,9 @@ class Component extends DCLogic {
 
   componentDidUpdate(prevProps, prevState) {
     document.body.dataset.theme = this.state.theme;
+    if (prevState && prevState.theme !== this.state.theme) {
+      if (window.syncCalTheme) window.syncCalTheme(this.state.theme);
+    }
     if (prevState && prevState.lang !== this.state.lang) this._applyLang();
     this._wire();
   }
