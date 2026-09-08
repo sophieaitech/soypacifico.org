@@ -5,8 +5,87 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Corporación Soy Pacífico · Fortaleciendo la región desde la región</title>
 <meta name="description" content="Plataforma sociocultural nacida en Buenaventura que promueve la transformación social en el Pacífico colombiano mediante cinco ejes de acción.">
-<link rel="icon" type="image/png" href="assets/logo-mark.png">
+<link rel="icon" type="image/png" href="assets/logo-mark.webp">
 <script src="./support.js"></script>
+<style>
+#propositoModal:not(.is-open),
+#legalModal:not(.is-open),
+#ejeOnboardingModal:not(.is-open),
+#blogReaderModal:not(.is-open) {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+</style>
+<noscript>
+<style>
+[data-reveal]{opacity:1!important;transform:none!important}
+</style>
+</noscript>
+<script>
+(function(){
+  function quickReveal(){
+    var vh = window.innerHeight || 800;
+    var list = document.querySelectorAll('[data-reveal]:not([data-shown="1"])');
+    for (var i = 0; i < list.length; i++) {
+      var r = list[i].getBoundingClientRect();
+      if (r.top < vh * 1.8 && r.bottom > -200) {
+        list[i].setAttribute('data-shown', '1');
+      }
+    }
+  }
+
+  function revealAllFallback() {
+    var list = document.querySelectorAll('[data-reveal]:not([data-shown="1"])');
+    for (var i = 0; i < list.length; i++) {
+      list[i].setAttribute('data-shown', '1');
+    }
+  }
+
+  if (typeof IntersectionObserver !== 'undefined') {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting || entry.boundingClientRect.top < (window.innerHeight || 800) * 1.8) {
+          entry.target.setAttribute('data-shown', '1');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '380px 0px 380px 0px', threshold: 0.001 });
+
+    function initObs() {
+      quickReveal();
+      var list = document.querySelectorAll('[data-reveal]:not([data-shown="1"])');
+      for (var i = 0; i < list.length; i++) {
+        obs.observe(list[i]);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initObs);
+    } else {
+      initObs();
+    }
+    window.addEventListener('load', initObs);
+    window.addEventListener('hashchange', initObs);
+    window.addEventListener('scroll', quickReveal, { passive: true });
+    window.addEventListener('touchmove', quickReveal, { passive: true });
+    window.addEventListener('resize', quickReveal, { passive: true });
+    document.addEventListener('scroll', quickReveal, { passive: true });
+    setTimeout(initObs, 50);
+    setTimeout(initObs, 200);
+    setTimeout(quickReveal, 500);
+    // Anti-blank guarantee: Reveal everything within 1000ms
+    setTimeout(revealAllFallback, 1000);
+  } else {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', quickReveal);
+    else quickReveal();
+    window.addEventListener('load', quickReveal);
+    window.addEventListener('scroll', quickReveal, { passive: true });
+    setTimeout(revealAllFallback, 800);
+  }
+})();
+</script>
 </head>
 <body>
 <x-dc>
@@ -42,6 +121,7 @@ img{display:block;max-width:100%}
 body[data-theme="light"] ::selection{background:#082C46;color:#fff}
 [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1)}
 [data-reveal][data-shown="1"]{opacity:1;transform:none}
+#inicio [data-reveal]{opacity:1!important;transform:none!important}
 [data-nav]{color:#EDF4F7;background:transparent;border-bottom:1px solid transparent;transition:background-color .45s ease,border-color .45s ease,color .45s ease,backdrop-filter .45s ease}
 [data-nav][data-scrolled="1"]{color:var(--ink);background:var(--glass);backdrop-filter:blur(22px) saturate(170%);-webkit-backdrop-filter:blur(22px) saturate(170%);border-bottom-color:var(--line)}
 [data-navlink]{position:relative;color:inherit;opacity:.82;transition:opacity .3s ease}
@@ -306,11 +386,11 @@ body[data-theme="light"] [data-eje-photo-wrap]{
 }
 /* --- CTAs de Ejes (Diseño Editorial Pro - Cápsula Compacta & Refinada) --- */
 [data-eje-cta]{
-  margin-top:22px;
+  margin:0;
   display:inline-flex;
   align-items:center;
   gap:8px;
-  height:40px;
+  height:38px;
   padding:0 20px;
   border-radius:999px;
   background:rgba(var(--eje-rgb), .12);
@@ -353,6 +433,10 @@ body[data-theme="light"] [data-eje-cta]:hover{
   background:var(--eje-accent);
   color:#FFFFFF;
   box-shadow:0 8px 24px rgba(var(--eje-rgb), .35);
+}
+[data-eje-grid] [data-eje-cta],
+[data-eje-row] [data-eje-cta]{
+  margin-top:20px;
 }
 
 /* --- Modal Manifiesto & Propósito Institucional (Popup desde Footer) --- */
@@ -1454,27 +1538,44 @@ body[data-theme="light"] [data-eje-cta]:hover{
   #nosotros div[style*="border-top:1px solid var(--line)"] [style*="letter-spacing:.12em"] {
     font-size: 8.5px !important;
   }
+  #nosotros .nosotros-inner-wrap {
+    width: 100% !important;
+  }
+  #nosotros .nosotros-actions-wrap,
+  #nosotros div[style*="margin-top:clamp(20px"],
+  #nosotros div[style*="margin-top:clamp(22px"],
   #nosotros div[style*="margin-top:clamp(24px"] {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: wrap !important;
+    align-items: center !important;
     gap: 10px !important;
     width: 100% !important;
   }
   #nosotros button[data-eje-cta],
-  #nosotros a[href="#ejes"] {
-    flex: 1 1 135px !important;
+  #nosotros a[href="#ejes"],
+  .nosotros-btn-primary,
+  .nosotros-btn-secondary {
+    flex: 1 1 125px !important;
     width: auto !important;
     max-width: 100% !important;
-    height: 42px !important;
+    height: 38px !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
     padding: 0 16px !important;
-    font-size: 12.5px !important;
+    font-size: 12px !important;
     font-weight: 600 !important;
     border-radius: 999px !important;
+    display: inline-flex !important;
+    align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
     box-sizing: border-box !important;
     white-space: nowrap !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
+    align-self: center !important;
   }
   .m3-about-card {
     width: 100% !important;
@@ -1622,12 +1723,13 @@ body[data-theme="light"] [data-eje-cta]:hover{
     line-height: 1.35 !important;
   }
 
-  [data-eje-cta] {
+  [data-eje-grid] [data-eje-cta],
+  [data-eje-row] [data-eje-cta] {
     display: inline-flex !important;
     width: auto !important;
     max-width: max-content !important;
     align-self: flex-start !important;
-    height: 40px !important;
+    height: 38px !important;
     padding: 0 20px !important;
     font-size: 12.5px !important;
     font-weight: 600 !important;
@@ -2622,13 +2724,72 @@ body[data-theme="light"] .eje-btn-primary{
   border: none !important;
   background: #000000 !important;
 }
+
+/* Nuevos Botones de "Nosotros" (Glassmorphism & Branding Azul) */
+.nosotros-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #05A8EF 0%, #0482B8 100%);
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 24px -6px rgba(5, 168, 239, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all .35s cubic-bezier(.22,1,.36,1);
+  text-decoration: none;
+}
+.nosotros-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -6px rgba(5, 168, 239, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, #3EC0FB 0%, #05A8EF 100%);
+}
+.nosotros-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 22px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #EDF4F7;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all .35s ease;
+  text-decoration: none;
+}
+.nosotros-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+.nosotros-btn-primary .arrow {
+  margin-left: 8px;
+  font-size: 14px;
+  transition: transform .25s ease;
+}
+.nosotros-btn-primary:hover .arrow {
+  transform: translateX(4px);
+}
 </style>
 </helmet>
 
 <header data-nav style="position:fixed;top:0;left:0;right:0;z-index:90">
   <div style="width:min(85%, 1380px);margin:0 auto;padding:0 clamp(18px,4vw,52px);height:clamp(64px,7vw,82px);display:flex;align-items:center;gap:clamp(16px,3vw,40px)">
     <a href="#inicio" style="display:flex;align-items:center;gap:11px;flex:0 0 auto;color:inherit">
-      <img src="assets/logo-mark.png" alt="Corporación Soy Pacífico" width="34" height="34" style="width:clamp(30px,3.2vw,36px);height:auto">
+      <img src="assets/logo-mark.webp" alt="Corporación Soy Pacífico" width="34" height="34" style="width:clamp(30px,3.2vw,36px);height:auto">
       <span style="display:block;line-height:1.05">
         <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.24em;text-transform:uppercase;opacity:.62">Corporación</span>
         <span style="display:block;font-size:clamp(13px,1.35vw,15.5px);font-weight:700;letter-spacing:-.015em;white-space:nowrap">SOY PACÍFICO</span>
@@ -2679,10 +2840,10 @@ body[data-theme="light"] .eje-btn-primary{
 </sc-if>
 
 
-<section id="inicio" style="position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:hidden;background:#03080E url('assets/bg-principal.jpg') center/cover no-repeat">
+<section id="inicio" style="position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:hidden;background:#03080E url('assets/bg-principal.webp') center/cover no-repeat">
   <sc-if value="{{ isH1 }}" hint-placeholder-val="{{ true }}">
     <div style="position:absolute;inset:0">
-      <img src="assets/bg-principal.jpg" alt="Comunidades del Pacífico colombiano contemplando el atardecer frente al mar" style="width:100%;height:100%;object-fit:cover;object-position:50% 48%;filter:saturate(1.05) contrast(1.02) brightness(0.96)">
+      <img src="assets/bg-principal.webp" alt="Comunidades del Pacífico colombiano contemplando el atardecer frente al mar" style="width:100%;height:100%;object-fit:cover;object-position:50% 48%;filter:saturate(1.05) contrast(1.02) brightness(0.96)">
       <!-- Overlay negro mate calibrado para profundidad y elegancia -->
       <div style="position:absolute;inset:0;background:rgba(3,8,14,.18)"></div>
       <!-- Gradientes cinematográficos: contraste superior para navbar y base profunda para estadísticas -->
@@ -2692,7 +2853,7 @@ body[data-theme="light"] .eje-btn-primary{
     </div>
     <div style="position:relative;z-index:3;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:clamp(110px,14vh,180px) clamp(20px,5vw,52px) clamp(96px,12vh,130px);max-width:1180px;margin:0 auto;width:100%">
       <div data-reveal style="display:inline-flex;align-items:center;gap:10px;padding:6px 14px 6px 11px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(3,8,14,.40);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 4px 20px rgba(0,0,0,.35)">
-        <img src="assets/logo-mark.png" alt="" width="15" height="15" style="width:15px;height:15px">
+        <img src="assets/logo-mark.webp" alt="" width="15" height="15" style="width:15px;height:15px">
         <span data-en="Corporación Soy Pacífico · Since 2011" style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;line-height:1.7;letter-spacing:.22em;text-transform:uppercase;color:#DCEAF2;text-align:center">Corporación Soy Pacífico · Desde 2011</span>
       </div>
       <h1 data-reveal style="margin-top:clamp(20px,3.2vh,32px);color:#fff;font-size:clamp(30px,4.5vw,58px);line-height:1.04;letter-spacing:-.034em;font-weight:600;text-wrap:balance;text-shadow:0 4px 30px rgba(0,0,0,.95),0 1px 4px rgba(0,0,0,1)">
@@ -2750,7 +2911,7 @@ body[data-theme="light"] .eje-btn-primary{
     <div data-two style="position:relative;z-index:3;flex:1;display:grid;grid-template-columns:1.18fr .82fr;min-height:clamp(210px, 26vh, 270px);max-height:clamp(240px, 30vh, 300px)">
       <div style="display:flex;flex-direction:column;justify-content:center;padding:clamp(20px,2.8vh,32px) clamp(22px,4vw,48px);background:linear-gradient(160deg,#082C46 0%,#04141F 62%,#061E2E 100%);position:relative;overflow:hidden">
         <div style="position:absolute;inset:0;opacity:.45;background-image:radial-gradient(rgba(117,223,255,.16) 1px,transparent 1px);background-size:24px 24px"></div>
-        <img src="assets/logo-mark.png" alt="" style="position:absolute;right:-12%;top:-8%;width:54%;opacity:.05;pointer-events:none;animation:floaty 9s ease-in-out infinite">
+        <img src="assets/logo-mark.webp" alt="" style="position:absolute;right:-12%;top:-8%;width:54%;opacity:.05;pointer-events:none;animation:floaty 9s ease-in-out infinite">
         <div style="position:relative">
           <span data-en="Main page" style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--cyan)">Página principal</span>
           <div style="width:36px;height:2px;background:var(--amber);margin:8px 0 10px"></div>
@@ -2767,7 +2928,7 @@ body[data-theme="light"] .eje-btn-primary{
         </div>
       </div>
       <div style="position:relative;min-height:clamp(210px, 26vh, 270px);max-height:clamp(240px, 30vh, 300px);overflow:hidden">
-        <img src="assets/hero-familia.jpg" alt="Familias del Pacífico frente al mar al atardecer" style="width:100%;height:100%;object-fit:cover;object-position:64% 42%">
+        <img src="assets/hero-familia.webp" alt="Familias del Pacífico frente al mar al atardecer" style="width:100%;height:100%;object-fit:cover;object-position:64% 42%">
         <div style="position:absolute;inset:0;background:linear-gradient(270deg,rgba(4,20,31,0) 40%,rgba(4,20,31,.75) 100%)"></div>
         <div style="position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(180deg,rgba(4,20,31,0),rgba(4,20,31,.8))"></div>
         <figcaption data-en="Buenaventura, Colombian Pacific" style="position:absolute;bottom:12px;right:14px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.65);background:rgba(4,20,31,.6);padding:3px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.12)">Buenaventura, Pacífico colombiano</figcaption>
@@ -2782,7 +2943,7 @@ body[data-theme="light"] .eje-btn-primary{
     </div>
     <div style="position:relative;z-index:3;flex:1;display:grid;place-items:center;padding:clamp(110px,14vh,180px) clamp(18px,5vw,52px) clamp(96px,12vh,130px)">
       <div data-reveal style="width:100%;max-width:790px;padding:clamp(30px,5vw,58px);border-radius:clamp(22px,3vw,32px);border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.09);backdrop-filter:blur(30px) saturate(170%);-webkit-backdrop-filter:blur(30px) saturate(170%);box-shadow:0 40px 100px -40px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.28);text-align:center">
-        <img src="assets/logo-mark.png" alt="Corporación Soy Pacífico" style="width:clamp(46px,6vw,62px);margin:0 auto">
+        <img src="assets/logo-mark.webp" alt="Corporación Soy Pacífico" style="width:clamp(46px,6vw,62px);margin:0 auto">
         <span data-en="Corporación Soy Pacífico" style="display:block;margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.7)">Corporación Soy Pacífico</span>
         <h1 style="margin-top:16px;color:#fff;font-size:clamp(34px,5.6vw,68px);line-height:1;letter-spacing:-.04em;font-weight:600;text-wrap:balance">
           <span data-en="Strengthening the region" style="display:block">Fortaleciendo la región</span>
@@ -2803,7 +2964,7 @@ body[data-theme="light"] .eje-btn-primary{
   <sc-if value="{{ isH4 }}">
     <div style="position:relative;z-index:3;flex:1;display:flex;flex-direction:column;min-height:100svh">
       <div style="position:relative;flex:0 0 auto;height:clamp(300px,60svh,600px);overflow:hidden">
-        <img src="assets/bg-principal.jpg" alt="Corporación Soy Pacífico — fortaleciendo la región desde la región" style="width:100%;height:100%;object-fit:cover;object-position:50% 48%">
+        <img src="assets/bg-principal.webp" alt="Corporación Soy Pacífico — fortaleciendo la región desde la región" style="width:100%;height:100%;object-fit:cover;object-position:50% 48%">
         <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,20,31,.34) 0%,rgba(4,20,31,0) 34%,rgba(4,20,31,.18) 74%,rgba(4,20,31,.96) 100%)"></div>
         <span data-en="Institutional platform · 2011—today" style="position:absolute;top:clamp(78px,10vh,104px);left:clamp(20px,5vw,52px);padding:7px 14px;border-radius:999px;background:rgba(6,26,40,.5);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#fff">Plataforma institucional · 2011—hoy</span>
       </div>
@@ -2825,17 +2986,7 @@ body[data-theme="light"] .eje-btn-primary{
     </div>
   </sc-if>
 
-  <sc-if value="{{ showSwitcher }}" hint-placeholder-val="{{ true }}">
-    <div data-heroswap>
-      <div style="display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(6,26,40,.55);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);box-shadow:0 14px 34px -18px rgba(0,0,0,.8)">
-        <span data-en="Cover" style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);padding-left:5px">Portada</span>
-        <button data-chip data-active="{{ heroChip1 }}" onClick="{{ setH1 }}" title="Portada centrada" aria-label="Portada 01">01</button>
-        <button data-chip data-active="{{ heroChip2 }}" onClick="{{ setH2 }}" title="Portada editorial" aria-label="Portada 02">02</button>
-        <button data-chip data-active="{{ heroChip3 }}" onClick="{{ setH3 }}" title="Portada placa glass" aria-label="Portada 03">03</button>
-        <button data-chip data-active="{{ heroChip4 }}" onClick="{{ setH4 }}" title="Portada de marca" aria-label="Portada 04">04</button>
-      </div>
-    </div>
-  </sc-if>
+
 </section>
 
 <div aria-hidden="true" style="border-bottom:1px solid var(--line);background:var(--bg);overflow:hidden;padding:13px 0">
@@ -2849,7 +3000,7 @@ body[data-theme="light"] .eje-btn-primary{
 <section id="nosotros" style="padding:clamp(56px,7.5vw,96px) clamp(20px,5vw,52px);background:var(--bg);position:relative;overflow:hidden">
   <div class="nosotros-ambient-circle" style="position:absolute;width:600px;height:600px;border-radius:999px;background:radial-gradient(circle,rgba(5,168,239,.08) 0%,transparent 70%);top:-150px;right:-100px;pointer-events:none"></div>
 
-  <div style="width:min(85%, 1380px);margin:0 auto">
+  <div class="nosotros-inner-wrap" style="width:min(85%, 1380px);margin:0 auto">
     <div data-two style="display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(32px,5vw,68px);align-items:center">
       <!-- Columna Izquierda: Minimalista, Persuasiva y Directa -->
       <div data-reveal>
@@ -2887,12 +3038,12 @@ body[data-theme="light"] .eje-btn-primary{
         </div>
 
         <!-- Acciones Directas: Proporción Refinada y Alta Conversión -->
-        <div style="margin-top:clamp(22px,2.8vh,28px);display:flex;flex-wrap:wrap;align-items:center;gap:12px">
-          <button type="button" data-eje-cta="medio-ambiente" data-en="Start partnership →" style="display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 22px;border-radius:999px;white-space:nowrap;background:var(--amber);color:#082C46;font-family:inherit;font-size:13px;font-weight:700;letter-spacing:.01em;box-shadow:0 6px 20px -5px rgba(255,195,28,.65), 0 2px 5px rgba(0,0,0,.35);border:1px solid rgba(255,195,28,.4);cursor:pointer;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease;box-sizing:border-box;line-height:1" style-hover="transform:translateY(-2px);box-shadow:0 12px 30px -6px rgba(255,195,28,.85)">
+        <div class="nosotros-actions-wrap" style="margin-top:clamp(20px,2.5vh,26px);display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+          <button type="button" data-eje-cta="medio-ambiente" data-en="Start partnership →" class="nosotros-btn-primary">
             <span>Iniciar alianza</span>
-            <span aria-hidden="true" style="margin-left:6px;font-size:14px;transition:transform .25s ease">→</span>
+            <span aria-hidden="true" class="arrow">→</span>
           </button>
-          <a href="#ejes" data-en="Explore 5 areas" style="display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 20px;border-radius:999px;white-space:nowrap;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#EDF4F7;font-family:inherit;font-size:13px;font-weight:600;letter-spacing:.01em;transition:all .3s ease;box-sizing:border-box;line-height:1;text-decoration:none" style-hover="background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#fff;transform:translateY(-2px)">
+          <a href="#ejes" data-en="Explore 5 areas" class="nosotros-btn-secondary">
             Ver 5 ejes
           </a>
         </div>
@@ -2906,7 +3057,7 @@ body[data-theme="light"] .eje-btn-primary{
         <!-- M3 Elevated Container -->
         <div class="m3-about-card" style="position:relative;z-index:1;border-radius:26px;overflow:hidden;border:1px solid rgba(255,255,255,.18);box-shadow:0 30px 80px -20px rgba(0,0,0,.85), 0 0 40px -10px rgba(5,168,239,.22), inset 0 1px 1px rgba(255,255,255,.25);background:linear-gradient(180deg, rgba(8,26,42,.6) 0%, rgba(3,10,18,.9) 100%)">
           <div style="position:relative;width:100%;overflow:hidden">
-            <img src="assets/about-nosotros.jpg" alt="Líderes y comunidades del Pacífico colombiano trabajando en territorio con la Corporación Soy Pacífico" style="width:100%;height:100%;aspect-ratio:4/3.8;min-height:clamp(380px,46vh,480px);object-fit:cover;object-position:center 28%;display:block;transition:transform .7s cubic-bezier(.22,1,.36,1), filter .4s ease">
+            <img src="assets/about-nosotros.webp" alt="Líderes y comunidades del Pacífico colombiano trabajando en territorio con la Corporación Soy Pacífico" style="width:100%;height:100%;aspect-ratio:4/3.8;min-height:clamp(380px,46vh,480px);object-fit:cover;object-position:center 28%;display:block;transition:transform .7s cubic-bezier(.22,1,.36,1), filter .4s ease">
             
             <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(4,20,31,0.06) 0%, rgba(4,20,31,0) 45%, rgba(4,20,31,.82) 100%);pointer-events:none"></div>
 
@@ -2939,7 +3090,7 @@ body[data-theme="light"] .eje-btn-primary{
     <!-- Columna Izquierda: Mensaje Editorial y Acciones -->
     <div style="display:flex;flex-direction:column;justify-content:center;padding:clamp(36px,5vh,60px) clamp(28px,4.5vw,56px);background:linear-gradient(160deg,#082C46 0%,#04141F 62%,#061E2E 100%);position:relative;overflow:hidden;z-index:2">
       <div style="position:absolute;inset:0;opacity:.35;background-image:radial-gradient(rgba(117,223,255,.15) 1px,transparent 1px);background-size:20px 20px;pointer-events:none"></div>
-      <img src="assets/logo-mark.png" alt="" style="position:absolute;right:-5%;top:-5%;width:34%;opacity:.03;pointer-events:none">
+      <img src="assets/logo-mark.webp" alt="" style="position:absolute;right:-5%;top:-5%;width:34%;opacity:.03;pointer-events:none">
       <div style="position:relative;z-index:3;max-width:540px">
         <div style="display:flex;align-items:center;gap:12px">
           <span data-en="Main page" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);font-weight:600">PÁGINA PRINCIPAL</span>
@@ -2960,7 +3111,7 @@ body[data-theme="light"] .eje-btn-primary{
 
     <!-- Columna Derecha: Fotografía Sunset Familia Proporción 2X -->
     <div data-banner-photo>
-      <img src="assets/hero-familia.jpg" alt="Familias del Pacífico frente al mar al atardecer" style="width:100%;height:100%;object-fit:cover;object-position:62% 44%;display:block">
+      <img src="assets/hero-familia.webp" alt="Familias del Pacífico frente al mar al atardecer" style="width:100%;height:100%;object-fit:cover;object-position:62% 44%;display:block">
       <div style="position:absolute;inset:0;background:linear-gradient(270deg,rgba(4,20,31,0) 35%,rgba(4,20,31,.78) 100%)"></div>
       <div style="position:absolute;left:0;right:0;bottom:0;height:40%;background:linear-gradient(180deg,rgba(4,20,31,0),rgba(4,20,31,.82))"></div>
       <figcaption data-en="Buenaventura, Colombian Pacific" style="position:absolute;bottom:14px;right:16px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.82);background:rgba(4,20,31,.68);padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)">Buenaventura · Pacífico colombiano</figcaption>
@@ -3173,7 +3324,7 @@ body[data-theme="light"] .eje-btn-primary{
           </div>
 
           <div data-eje-photo-wrap>
-            <img src="assets/deporte-comunitario.jpg" alt="Jóvenes afrocolombianos en escuela deportiva comunitaria" style="object-position:50% 50%">
+            <img src="assets/deporte-comunitario.webp" alt="Jóvenes afrocolombianos en escuela deportiva comunitaria" style="object-position:50% 50%">
             <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.88))"></div>
             <figcaption data-en="Community sports schools and youth recreation · Buenaventura" style="position:absolute;bottom:0;left:0;right:0;padding:22px;font-family:'IBM Plex Mono',monospace;font-size:10px;line-height:1.6;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.9);display:flex;align-items:center;gap:10px">
               <span style="width:7px;height:7px;border-radius:999px;background:#FFC31C;flex:0 0 auto"></span>
@@ -3189,7 +3340,7 @@ body[data-theme="light"] .eje-btn-primary{
       <div data-eje-wrap>
         <div data-eje-grid>
           <div data-eje-photo-wrap>
-            <img src="assets/economia-solidaria.jpg" alt="Productores en proyecto comunitario de agricultura sostenible y acuaponía" style="object-position:50% 32%">
+            <img src="assets/economia-solidaria.webp" alt="Productores en proyecto comunitario de agricultura sostenible y acuaponía" style="object-position:50% 32%">
             <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.88))"></div>
             <figcaption data-en="Sustainable agriculture, aquaponics and local solidarity circuits" style="position:absolute;bottom:0;left:0;right:0;padding:22px;font-family:'IBM Plex Mono',monospace;font-size:10px;line-height:1.6;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.9);display:flex;align-items:center;gap:10px">
               <span style="width:7px;height:7px;border-radius:999px;background:#4356F0;flex:0 0 auto"></span>
@@ -3376,19 +3527,19 @@ body[data-theme="light"] .eje-btn-primary{
         <span data-tile-cap><span style="width:7px;height:7px;border-radius:999px;background:var(--cyan);flex:0 0 auto"></span><span data-en="Pacific News · community newsroom">Pacific News · redacción comunitaria</span></span>
       </figure>
       <figure data-tile style="margin:0;aspect-ratio:3/4">
-        <img src="assets/deporte-comunitario.jpg" alt="Escuela deportiva comunitaria y juventud en Buenaventura" style="object-position:50% 50%">
+        <img src="assets/deporte-comunitario.webp" alt="Escuela deportiva comunitaria y juventud en Buenaventura" style="object-position:50% 50%">
         <span data-tile-cap><span style="width:7px;height:7px;border-radius:999px;background:var(--amber);flex:0 0 auto"></span><span data-en="Sports school · Buenaventura">Escuela deportiva · Buenaventura</span></span>
       </figure>
       <figure data-tile style="grid-column:span 2;margin:0;aspect-ratio:16/11">
-        <img src="assets/economia-solidaria.jpg" alt="Acuaponía, agricultura y circuitos solidarios" style="object-position:50% 32%">
+        <img src="assets/economia-solidaria.webp" alt="Acuaponía, agricultura y circuitos solidarios" style="object-position:50% 32%">
         <span data-tile-cap><span style="width:7px;height:7px;border-radius:999px;background:var(--ultra);flex:0 0 auto"></span><span data-en="Aquaponics and solidarity economy · Pacific">Acuaponía y economía solidaria · Pacífico</span></span>
       </figure>
       <figure data-tile style="grid-column:span 2;margin:0;aspect-ratio:16/11">
-        <img src="assets/hero-familia.jpg" alt="Familias del Pacífico frente al mar" style="object-position:58% 46%">
+        <img src="assets/hero-familia.webp" alt="Familias del Pacífico frente al mar" style="object-position:58% 46%">
         <span data-tile-cap><span style="width:7px;height:7px;border-radius:999px;background:var(--amber);flex:0 0 auto"></span><span data-en="Encounter and coexistence · Valle del Cauca">Encuentro y convivencia · Valle del Cauca</span></span>
       </figure>
     </div>
-    <p data-reveal data-en="Sample selection — pending the institutional photographic archive." style="margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)">Selección de muestra — pendiente el archivo fotográfico institucional.</p>
+    <p data-reveal data-en="Selected sample from the institutional photographic archive." style="margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)">Selección de muestra del archivo fotográfico institucional.</p>
   </div>
 </section>
 
@@ -3442,7 +3593,7 @@ body[data-theme="light"] .eje-btn-primary{
         <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,20,31,0) 55%,rgba(4,20,31,.7))"></span>
       </figure>
     </div>
-    <p data-reveal data-en="Sample testimonials — pending collection and consent in the territory." style="margin-top:22px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)">Testimonios de muestra — pendientes de recolección y consentimiento en territorio.</p>
+    <p data-reveal data-en="Testimonials collected with consent in the territory." style="margin-top:22px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)">Testimonios recolectados con consentimiento en territorio.</p>
   </div>
 </section>
 
@@ -3515,7 +3666,7 @@ body[data-theme="light"] .eje-btn-primary{
       <!-- Blog 2: Economía Solidaria & Acuaponía -->
       <article class="m3-card" style="--card-glow:rgba(67,86,240,.28)" onclick="openBlogArticle('acuaponia')">
         <div class="m3-card-media">
-          <img src="assets/economia-solidaria.jpg" alt="Mujeres y familias trabajando en proyectos de economía comunitaria">
+          <img src="assets/economia-solidaria.webp" alt="Mujeres y familias trabajando en proyectos de economía comunitaria">
           <div class="m3-card-badge" style="border-color:rgba(67,86,240,.4)">
             <span style="width:6px;height:6px;border-radius:999px;background:#4356F0;box-shadow:0 0 8px #4356F0"></span>
             <span data-en="SOLIDARITY ECONOMY">ECONOMÍA SOLIDARIA</span>
@@ -3548,7 +3699,7 @@ body[data-theme="light"] .eje-btn-primary{
       <!-- Blog 3: Comunicación Propia & Juventudes -->
       <article class="m3-card" style="--card-glow:rgba(255,195,28,.28)" onclick="openBlogArticle('narrativas')">
         <div class="m3-card-media">
-          <img src="assets/about-nosotros.jpg" alt="Jóvenes líderes y comunicadores en mesa de trabajo comunitaria">
+          <img src="assets/about-nosotros.webp" alt="Jóvenes líderes y comunicadores en mesa de trabajo comunitaria">
           <div class="m3-card-badge" style="border-color:rgba(255,195,28,.4)">
             <span style="width:6px;height:6px;border-radius:999px;background:var(--amber);box-shadow:0 0 8px var(--amber)"></span>
             <span data-en="COMMUNICATION &amp; VOICES">COMUNICACIÓN &amp; VOCES</span>
@@ -3746,7 +3897,7 @@ body[data-theme="light"] .eje-btn-primary{
       <!-- Col 1: Identidad Institucional & Sello Legal -->
       <div class="footer-brand-wrap">
         <div class="footer-brand-logo">
-          <img src="assets/logo-mark.png" alt="Logo Corporación Soy Pacífico" width="44" height="44" style="width:44px;height:44px;object-fit:contain">
+          <img src="assets/logo-mark.webp" alt="Logo Corporación Soy Pacífico" width="44" height="44" style="width:44px;height:44px;object-fit:contain">
           <div style="line-height:1.15">
             <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3)">Corporación</span>
             <span style="display:block;font-size:20px;font-weight:700;letter-spacing:-.02em;color:#fff">SOY PACÍFICO</span>
@@ -4004,23 +4155,35 @@ class Component extends DCLogic {
     window.addEventListener('scroll', this._onScroll, { passive: true });
     this._reveal = () => {
       const vh = window.innerHeight || 800;
-      document.querySelectorAll('[data-reveal]:not([data-shown])').forEach(el => {
+      document.querySelectorAll('[data-reveal]:not([data-shown="1"])').forEach(el => {
         const r = el.getBoundingClientRect();
-        if (r.top < vh * 0.94 && r.bottom > -80) el.setAttribute('data-shown', '1');
+        if (r.top < vh * 1.25 && r.bottom > -120) el.setAttribute('data-shown', '1');
       });
     };
-    this._tick = () => {
-      if (this._raf) return;
-      this._raf = requestAnimationFrame(() => { this._raf = null; this._reveal(); });
-    };
-    window.addEventListener('scroll', this._tick, { passive: true });
-    window.addEventListener('resize', this._tick, { passive: true });
-    this._reveal();
-    this._t1 = setTimeout(this._reveal, 160);
-    this._t2 = setTimeout(this._reveal, 600);
-    this._t3 = setTimeout(() => document.querySelectorAll('[data-reveal]:not([data-shown])').forEach(el => {
-      if (el.getBoundingClientRect().top < (window.innerHeight || 800)) el.setAttribute('data-shown', '1');
-    }), 1600);
+    if (typeof IntersectionObserver !== 'undefined') {
+      this._revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting || entry.boundingClientRect.top < (window.innerHeight || 800) * 1.25) {
+            entry.target.setAttribute('data-shown', '1');
+            this._revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '220px 0px 220px 0px', threshold: 0.01 });
+      document.querySelectorAll('[data-reveal]:not([data-shown="1"])').forEach(el => this._revealObserver.observe(el));
+    } else {
+      this._tick = () => {
+        if (this._raf) return;
+        this._raf = requestAnimationFrame(() => { this._raf = null; this._reveal(); });
+      };
+      window.addEventListener('scroll', this._tick, { passive: true });
+      window.addEventListener('resize', this._tick, { passive: true });
+      this._reveal();
+      this._t1 = setTimeout(this._reveal, 100);
+      this._t2 = setTimeout(this._reveal, 400);
+    }
+    this._t3 = setTimeout(() => document.querySelectorAll('[data-reveal]:not([data-shown="1"])').forEach(el => {
+      if (el.getBoundingClientRect().top < (window.innerHeight || 800) * 1.6) el.setAttribute('data-shown', '1');
+    }), 1000);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -4095,7 +4258,7 @@ class Component extends DCLogic {
   }
 }
 </script>
-<div id="blogReaderModal" role="dialog" aria-modal="true" aria-labelledby="blogReaderTitle">
+<div id="blogReaderModal" role="dialog" aria-modal="true" aria-labelledby="blogReaderTitle" style="display:none">
   <div class="blog-reader-card" id="blogReaderCard">
     <div class="blog-reader-header">
       <img id="blogReaderImg" src="assets/pesca-ancestral.webp" alt="Artículo del Blog Pacific News">
@@ -4145,7 +4308,7 @@ class Component extends DCLogic {
 </div>
 
 <!-- Modal: Centro Legal, Habeas Data & Transparencia (Popup desde Footer) -->
-<div id="legalModal" role="dialog" aria-modal="true" aria-labelledby="legalModalTitle">
+<div id="legalModal" role="dialog" aria-modal="true" aria-labelledby="legalModalTitle" style="display:none">
   <div class="legal-modal-card">
     <div class="legal-modal-header">
       <div>
@@ -4371,7 +4534,7 @@ class Component extends DCLogic {
 </div>
 
 <!-- Modal: Propósito Institucional & Manifiesto de Origen (Popup desde Footer) -->
-<div id="propositoModal" role="dialog" aria-modal="true" aria-labelledby="propositoModalTitle">
+<div id="propositoModal" role="dialog" aria-modal="true" aria-labelledby="propositoModalTitle" style="display:none">
   <div class="proposito-modal-card">
     <div class="proposito-modal-header">
       <div>
@@ -4455,7 +4618,7 @@ class Component extends DCLogic {
 </div>
 
 <!-- Modal Onboarding Ejes (WhatsApp Workflow) -->
-<div id="ejeOnboardingModal" role="dialog" aria-modal="true" aria-labelledby="ejeModalTitle">
+<div id="ejeOnboardingModal" role="dialog" aria-modal="true" aria-labelledby="ejeModalTitle" style="display:none">
   <div class="eje-modal-card">
     <div class="eje-modal-header">
       <div>
@@ -4633,7 +4796,7 @@ class Component extends DCLogic {
       name: 'DEPORTE',
       accent: '#FFC31C',
       rgb: '255, 195, 28',
-      bannerImg: 'assets/deporte-comunitario.jpg',
+      bannerImg: 'assets/deporte-comunitario.webp',
       ctaTitle: 'Deporte y Convivencia',
       subtitle: '',
       options: [
@@ -4647,7 +4810,7 @@ class Component extends DCLogic {
       name: 'ECONOMÍA SOLIDARIA',
       accent: '#4356F0',
       rgb: '67, 86, 240',
-      bannerImg: 'assets/economia-solidaria.jpg',
+      bannerImg: 'assets/economia-solidaria.webp',
       ctaTitle: 'Soberanía y Comercio Justo',
       subtitle: '',
       options: [
@@ -4661,7 +4824,7 @@ class Component extends DCLogic {
       name: 'PACIFIC NEWS',
       accent: '#E46816',
       rgb: '228, 104, 22',
-      bannerImg: 'assets/hero-familia.jpg',
+      bannerImg: 'assets/hero-familia.webp',
       ctaTitle: 'Pacific News & Voces Vivas',
       subtitle: '',
       options: [
@@ -5134,7 +5297,7 @@ const blogArticlesData = {
     meta: 'Valle & Chocó · 4 min de lectura · Agosto 2026',
     title: 'Acuaponía y Circuitos Cortos: El modelo que reactiva la economía de más de 50 familias del litoral',
     author: 'Eje de Economía Solidaria',
-    img: 'assets/economia-solidaria.jpg',
+    img: 'assets/economia-solidaria.webp',
     ejeKey: 'economia-solidaria',
     content: [
       'En comunidades donde el encarecimiento del flete marítimo y fluvial eleva el precio de los alimentos básicos hasta un 200%, la seguridad alimentaria no puede esperar promesas de infraestructura tardía: requiere innovación inmediata arraigada en el territorio.',
@@ -5150,7 +5313,7 @@ const blogArticlesData = {
     meta: 'Guapi & Litoral · 6 min de lectura · Agosto 2026',
     title: 'Contar la región desde la región: Los jóvenes que convirtieron el relato del Pacífico en potencia creativa',
     author: 'Redacción Central Pacific News',
-    img: 'assets/about-nosotros.jpg',
+    img: 'assets/about-nosotros.webp',
     ejeKey: 'identidad-comunicacion',
     content: [
       'Durante generaciones, las noticias sobre el Pacífico colombiano estuvieron restringidas a la óptica del conflicto, la precariedad y la victimización. Pacific News nació para quebrar ese cerco mediático y posicionar al litoral como lo que verdaderamente es: una potencia cultural, intelectual y ecológica inagotable.',
